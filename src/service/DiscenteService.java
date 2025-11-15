@@ -1,40 +1,22 @@
 package service;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-
 import java.util.ArrayList;
 
+import infra.HttpService;
+import infra.JSONService;
 import model.Discente;
-
-import javax.net.ssl.SSLContext;
 
 public class DiscenteService  {
 
     private static final String endpoint = "https://rmi6vdpsq8.execute-api.us-east-2.amazonaws.com/msAluno";
 
-    private static final HttpClient cliente = HttpClient.newBuilder()
-            .build();
+    public static ArrayList<Discente> get() {
 
-    public ArrayList<Discente> getDiscentes() {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(endpoint))
-                .GET()
-                .build();
+        String response = HttpService.get(endpoint);
 
-        try {
-            HttpResponse<String> response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        JSONService<Discente> JSON = new JSONService<>(Discente.class);
+        return JSON.desseralization(response);
 
-            System.out.println("Status Code: " + response.statusCode());
-            System.out.println("Response Body: " + response.body());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
     }
 
 }

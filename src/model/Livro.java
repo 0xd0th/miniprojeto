@@ -15,4 +15,30 @@ public class Livro {
         this.status = status;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %d\nTitulo: %s\nAutor: %s\nAno: %d\nStatus: %s\n",
+                id, titulo, autor, ano, status);
+    }
+
 }
