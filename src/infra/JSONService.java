@@ -15,9 +15,13 @@ public class JSONService<T> {
         this.clazz = clazz;
     }
 
-    public ArrayList<T> desseralization( String json) {
+    public ArrayList<T> deseralization( String json ) {
         Type tipoLista = TypeToken.getParameterized(ArrayList.class, clazz).getType();
         return GSON.fromJson(json, tipoLista);
+    }
+
+    public String seralization( T clazz ) {
+        return GSON.toJson(clazz);
     }
 
 }

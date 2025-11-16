@@ -1,6 +1,6 @@
 package service;
 
-import infra.HttpService;
+import infra.HTTP.HttpRequestService;
 import infra.JSONService;
 import model.Livro;
 
@@ -12,10 +12,10 @@ public class BibliotecaService {
 
     public static ArrayList<Livro> get() {
 
-        String response = HttpService.get(endpoint);
+        String response = HttpRequestService.get(endpoint);
 
         JSONService<Livro> JSON = new JSONService<>(Livro.class);
-        return JSON.desseralization(response);
+        return JSON.deseralization(response);
 
     }
 

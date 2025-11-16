@@ -1,14 +1,13 @@
-package infra;
+package infra.HTTP;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class HttpService {
+public class HttpRequestService {
 
-    private static final HttpClient cliente = HttpClient.newBuilder()
-            .build();
+    private static final HttpClient cliente = HttpClient.newBuilder().build();
 
     public static String get(String endpoint) {
         HttpRequest request = HttpRequest.newBuilder()

@@ -2,7 +2,7 @@ package service;
 
 import java.util.ArrayList;
 
-import infra.HttpService;
+import infra.HTTP.HttpRequestService;
 import infra.JSONService;
 import model.Discente;
 
@@ -12,10 +12,10 @@ public class DiscenteService  {
 
     public static ArrayList<Discente> get() {
 
-        String response = HttpService.get(endpoint);
+        String response = HttpRequestService.get(endpoint);
 
         JSONService<Discente> JSON = new JSONService<>(Discente.class);
-        return JSON.desseralization(response);
+        return JSON.deseralization(response);
 
     }
 

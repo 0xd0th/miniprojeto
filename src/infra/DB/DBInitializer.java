@@ -12,9 +12,9 @@ public class DBInitializer {
 
             Statement stmt = conexao.createStatement();
 
-            stmt.execute("DROP DATABASE miniprojeto;");
-            stmt.execute("CREATE DATABASE miniprojeto;");
-            stmt.execute("USE miniprojeto");
+            //stmt.execute("DROP DATABASE miniprojeto;");
+            //stmt.execute("CREATE DATABASE miniprojeto;");
+            //stmt.execute("USE miniprojeto");
 
             String createDiscente = """
                     CREATE TABLE IF NOT EXISTS discente (

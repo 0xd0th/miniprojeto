@@ -5,6 +5,7 @@ import model.Disciplina;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -36,5 +37,36 @@ public class DisciplinaDAO {
         }
 
     }
+
+    public static Disciplina acharPorId( int ID ) {
+
+        String sql = """
+                SELECT * FROM disciplina WHERE disciplina.id = ?;
+                """;
+
+        Disciplina temp = null;
+
+        try ( PreparedStatement stmt = conexao.prepareStatement(sql) ) {
+
+            stmt.setInt(1, ID);
+
+            ResultSet result = stmt.executeQuery();
+            if (result.next()) {
+                temp = new Disciplina(
+                        result.getInt("id"),
+                        result.getString("curso"),
+                        result.getString("nome"),
+                        result.getInt("vagas"));
+            }
+
+        } catch ( SQLException e ) {
+            System.out.println("error DisciplinaDAO");
+        }
+
+        return temp;
+
+    }
+
+
 
 }
